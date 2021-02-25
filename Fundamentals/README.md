@@ -67,3 +67,17 @@ Bước 3: Thực hiện phân tích toán học để ước lượng lượng 
     1. Đặc trưng hóa dữ liệu nhập của giải thuật
     2. Tính giá trị trung bình của tổng só olanaf tác vụ căn bản được thực thi trong giải thuật
     3. Suy ra thời gian tính toán trung bình của toàn giải thuật.
+
+### Các kết quả tiệm cận và xấp xỉ  
+
+## Phân tích giải thuật lặp
+## Phân tích giải thuật đệ quy
+## Nguyên tắc phân tích độ phức tạp trung bình  
+Để phân tích độ phức tạp trung bình của một giải thuật A, ta phải làm một số bước theo trình tự sau đây:  
+1. Quyết định một *không gian lấy mẫu* (sampling space) để diễn tả những trường hợp mà dữ liệu đầu vào (kích thước n) có thể có. Giả sử không gian lấy mẫu là S = {I<sub>1</sub>, I<sub>2</sub>,..., I<sub>k</sub>}  
+2. Định nghĩa một phân bố xác suất p trên S nhằm biểu diễn chắc chắn mà dữ liệu đầu vào đó có thể xảy ra.  
+3. Tính tổng số tác vụ căn bản được giải thuật A thực hiện để xử lý một trường hợp mẫu. Ta dùng v(I<sub>k</sub>) ký hiệu tổng số tác vụ được thực hiện bởi khi dữ liệu đầu vào thuộc trường hợp I<sub>k</sub>.  
+4. Ta tính trị trung bình của số tác vụ căn bản bằng cách tính kỳ vọng sau:  
+`C<sub>avg(n)</sub> = v(I<sub>1</sub>)p(I<sub>1</sub>) + v(I<sub>2</sub>)p(I<sub>2</sub>) + ... + v(I<sub>k</sub>)p(I<sub>k</sub>)`
+
+
