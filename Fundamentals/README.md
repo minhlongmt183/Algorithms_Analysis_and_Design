@@ -83,15 +83,15 @@ begin
     end
 ``` 
 
-Ta tiến hành phân tích qua 3 bước:
-    - **Bước 1:**
-        - Đặc trưng hóa dữ liệu: trường hợp này có 1 tham số nhập đó là n.  
-        - Loại phân tích: ta sẽ phân tích hết cả 3 trường hợp (tốt nhất, xấu nhất, trung bình)  
-    - **Bước 2:**
-        - Nhận diện thao tác căn bản của giải thuật: ở đây là phép so sánh vì phép so sánh được thực thi nhiều nhất trong giải thuật.  
-    - **Bước 3:**
-        - Xác định có bao nhiêu lần phép toán so sánh được thực thi khi ta chạy giải thuật với mảng có n phần tử.  
-        - Số lần phép so sánh thực thi cũng chính là số  lần lặp của vòng lặp for: *n-1*. Số lần thực thi này đều như nhau trong cả 3 trường hợp (tốt nhất, xấu nhất, trung bình) &#8594; f(n) = n -1 = O(n)  
+Ta tiến hành phân tích qua 3 bước:  
+- **Bước 1:**  
+    - Đặc trưng hóa dữ liệu: trường hợp này có 1 tham số nhập đó là n.  
+    - Loại phân tích: ta sẽ phân tích hết cả 3 trường hợp (tốt nhất, xấu nhất, trung bình)  
+- **Bước 2:**  
+    - Nhận diện thao tác căn bản của giải thuật: ở đây là phép so sánh vì phép so sánh được thực thi nhiều nhất trong giải thuật.  
+- **Bước 3:**  
+    - Xác định có bao nhiêu lần phép toán so sánh được thực thi khi ta chạy giải thuật với mảng có n phần tử.  
+    - Số lần phép so sánh thực thi cũng chính là số  lần lặp của vòng lặp for: *n-1*. Số lần thực thi này đều như nhau trong cả 3 trường hợp (tốt nhất, xấu nhất, trung bình) &#8594; f(n) = n -1 = O(n)  
 
 ## Phân tích giải thuật đệ quy 
 Chúng ta xem xét bài toán tháp Hà Nội với giải thuật như sau:  
@@ -111,26 +111,21 @@ end;
 ```  
 
 Ta tiến hành phân tích theo 3 bước:  
-    - **Bước 1:**  
-        - Đặc trưng hóa dữ liệu: có 1 tham số nhập là n chính là n đĩa.  
-    - **Bước 2:**  
-        - Thao tác căn bản của giải thuật là phép di chuyển (move).  
-    - **Bước 3:**  
-        - Xác định có bao nhiêu di chuyển đãi cần thực hiện.  
-        - Gọi C<sub>n>/sub là số lần di chuyển đĩa, ta có như sau:  
-        ```math
-        n = 1, C<sub>1</sub> = 1
-        n > 1, C<sub>n</sub> = C<sub>n-1</sub> + 1 + C<sub>n-1</sub> = 2C<sub>n-1</sub> + 1
-        ```
-        - Ta sẽ tiến hành giải hệ thức truy hồi trên để tìm độ phức tạp của giải thuật.  
-        ```math
-        n = 1, C<sub>1</sub> = 1
-        n > 1, C<sub>n</sub> = 2C<sub>n-1</sub> + 1  
-            C<sub>n</sub> = 2(2C<sub>n-2</sub> + 1) + 1 = 2^2 C(<sub>n-2</sub>) + (2 + 1)  
-            C<sub>n</sub> = 2^3 C(<sub>n-3</sub>) + (2^2 + 2 + 1)  
-                             ...
-            C<sub>n</sub> = 2^(n-1) + 2^(n-2) + ... + 2 + 1 = 2^n -1 = O(2^n)
-        ```
+- **Bước 1:**  
+    - Đặc trưng hóa dữ liệu: có 1 tham số nhập là n chính là n đĩa.  
+- **Bước 2:**  
+    - Thao tác căn bản của giải thuật là phép di chuyển (move).  
+- **Bước 3:**  
+    - Xác định có bao nhiêu di chuyển đãi cần thực hiện.  
+    - Gọi C<sub>n</sub> là số lần di chuyển đĩa, ta có như sau:  
+
+    ```math
+    n = 1, C<sub>1</sub> = 1
+    n > 1, C<sub>n</sub> = C<sub>n-1</sub> + 1 + C<sub>n-1</sub> = 2C<sub>n-1</sub> + 1
+    ```
+    - Ta sẽ tiến hành giải hệ thức truy hồi trên để tìm độ phức tạp của giải thuật.  
+    ![image](https://bitly.com.vn/u2je8l)
+
 
 
 ## Nguyên tắc phân tích độ phức tạp trung bình  
