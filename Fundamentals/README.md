@@ -65,19 +65,82 @@ Bước 3: Thực hiện phân tích toán học để ước lượng lượng 
 - Một hàm f(n) được gọi là O(g(n)) nếu tồn tại 2 hằng số c và n0 sao cho f(n) < c.g(n) Với mọi n > n0  
 - Phân tích đọ phức tạp trường hợp trung bình, ta phải:  
     1. Đặc trưng hóa dữ liệu nhập của giải thuật
-    2. Tính giá trị trung bình của tổng só olanaf tác vụ căn bản được thực thi trong giải thuật
+    2. Tính giá trị trung bình của tổng só lần tác vụ căn bản được thực thi trong giải thuật
     3. Suy ra thời gian tính toán trung bình của toàn giải thuật.
 
-### Các kết quả tiệm cận và xấp xỉ  
 
 ## Phân tích giải thuật lặp
-## Phân tích giải thuật đệ quy
+1. Cho giải thuật tìm phần tử lớn nhất trong mảng có n phần tử cho trước.  
+
+```c
+procedure MAX(A, n, max)
+/*Set max to the maximum of A(1:n)*/
+begin
+    integer i, n;
+    max := A[1];
+    for i:= 2 to n do
+        if A[i] > max then max := A[i]
+    end
+``` 
+
+Ta tiến hành phân tích qua 3 bước:
+    - **Bước 1:**
+        - Đặc trưng hóa dữ liệu: trường hợp này có 1 tham số nhập đó là n.  
+        - Loại phân tích: ta sẽ phân tích hết cả 3 trường hợp (tốt nhất, xấu nhất, trung bình)  
+    - **Bước 2:**
+        - Nhận diện thao tác căn bản của giải thuật: ở đây là phép so sánh vì phép so sánh được thực thi nhiều nhất trong giải thuật.  
+    - **Bước 3:**
+        - Xác định có bao nhiêu lần phép toán so sánh được thực thi khi ta chạy giải thuật với mảng có n phần tử.  
+        - Số lần phép so sánh thực thi cũng chính là số  lần lặp của vòng lặp for: *n-1*. Số lần thực thi này đều như nhau trong cả 3 trường hợp (tốt nhất, xấu nhất, trung bình) &#8594; f(n) = n -1 = O(n)  
+
+## Phân tích giải thuật đệ quy 
+Chúng ta xem xét bài toán tháp Hà Nội với giải thuật như sau:  
+
+```c
+procedure hanoi(n, beg, aux, end);
+begin
+    if n == 1 then
+    writeln(beg, end)
+    else
+    begin
+        hanoi(n-1, beg, end, aux);
+        writeln(beg, end);
+        hanoi(n-1, aux, beg, end);
+    end
+end;
+```  
+
+Ta tiến hành phân tích theo 3 bước:  
+    - **Bước 1:**  
+        - Đặc trưng hóa dữ liệu: có 1 tham số nhập là n chính là n đĩa.  
+    - **Bước 2:**  
+        - Thao tác căn bản của giải thuật là phép di chuyển (move).  
+    - **Bước 3:**  
+        - Xác định có bao nhiêu di chuyển đãi cần thực hiện.  
+        - Gọi C<sub>n>/sub là số lần di chuyển đĩa, ta có như sau:  
+        ```math
+        n = 1, C<sub>1</sub> = 1
+        n > 1, C<sub>n</sub> = C<sub>n-1</sub> + 1 + C<sub>n-1</sub> = 2C<sub>n-1</sub> + 1
+        ```
+        - Ta sẽ tiến hành giải hệ thức truy hồi trên để tìm độ phức tạp của giải thuật.  
+        ```math
+        n = 1, C<sub>1</sub> = 1
+        n > 1, C<sub>n</sub> = 2C<sub>n-1</sub> + 1  
+            C<sub>n</sub> = 2(2C<sub>n-2</sub> + 1) + 1 = 2^2 C(<sub>n-2</sub>) + (2 + 1)  
+            C<sub>n</sub> = 2^3 C(<sub>n-3</sub>) + (2^2 + 2 + 1)  
+                             ...
+            C<sub>n</sub> = 2^(n-1) + 2^(n-2) + ... + 2 + 1 = 2^n -1 = O(2^n)
+        ```
+
+
 ## Nguyên tắc phân tích độ phức tạp trung bình  
 Để phân tích độ phức tạp trung bình của một giải thuật A, ta phải làm một số bước theo trình tự sau đây:  
 1. Quyết định một *không gian lấy mẫu* (sampling space) để diễn tả những trường hợp mà dữ liệu đầu vào (kích thước n) có thể có. Giả sử không gian lấy mẫu là S = {I<sub>1</sub>, I<sub>2</sub>,..., I<sub>k</sub>}  
 2. Định nghĩa một phân bố xác suất p trên S nhằm biểu diễn chắc chắn mà dữ liệu đầu vào đó có thể xảy ra.  
 3. Tính tổng số tác vụ căn bản được giải thuật A thực hiện để xử lý một trường hợp mẫu. Ta dùng v(I<sub>k</sub>) ký hiệu tổng số tác vụ được thực hiện bởi khi dữ liệu đầu vào thuộc trường hợp I<sub>k</sub>.  
 4. Ta tính trị trung bình của số tác vụ căn bản bằng cách tính kỳ vọng sau:  
-`C<sub>avg(n)</sub> = v(I<sub>1</sub>)p(I<sub>1</sub>) + v(I<sub>2</sub>)p(I<sub>2</sub>) + ... + v(I<sub>k</sub>)p(I<sub>k</sub>)`
+C<sub>avg(n)</sub> = v(I<sub>1</sub>)p(I<sub>1</sub>) + v(I<sub>2</sub>)p(I<sub>2</sub>) + ... + v(I<sub>k</sub>)p(I<sub>k</sub>)
+
+
 
 
