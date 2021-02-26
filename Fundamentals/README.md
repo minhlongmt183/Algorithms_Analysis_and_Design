@@ -124,7 +124,7 @@ Ta tiến hành phân tích theo 3 bước:
     n > 1, C<sub>n</sub> = C<sub>n-1</sub> + 1 + C<sub>n-1</sub> = 2C<sub>n-1</sub> + 1
     ```
     - Ta sẽ tiến hành giải hệ thức truy hồi trên để tìm độ phức tạp của giải thuật.  
-    ![image](https://bitly.com.vn/u2je8l)
+    ![image](https://latex.codecogs.com/gif.latex?%5Cbegin%7Balign*%7D%20n%20%3D%201%2C%20C_1%20%26%20%3D%201%20%5C%5C%20n%20%3E%201%2C%20C_n%20%26%20%3D%202C_%7Bn-1%7D%20&plus;%201%20%5C%5C%20C_n%20%26%20%3D%202%282C_%7Bn-2%7D&plus;%201%29%20&plus;%201%20%5C%5C%20C_n%20%26%3D%202%5E2%20C%28%7Bn-2%7D%29%20&plus;%20%282%20&plus;%201%29%20%5C%5C%20C_n%20%26%20%3D%202%5E3%20C_%7Bn-3%7D%20&plus;%20%282%5E2%20&plus;%202%20&plus;%201%29%20%5C%5C%20...%20%5C%5C%20C_n%20%26%20%3D%202%5E%7Bn-1%7D%20&plus;%202%5E%7Bn-2%7D%20&plus;%20...%20&plus;%202%20&plus;%201%20%3D%202%5En%20-1%20%3D%20O%282%5En%29%20%5C%5C%20%5Cend%7Balign*%7D)
 
 
 
